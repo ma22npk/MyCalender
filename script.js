@@ -2,6 +2,8 @@
 // strictモードのコードは高速に実行することができる場合がある（JSエンジンによる最適化処理を困難にする誤りを修正するため
 'use strict'
 
+console.clear()
+
 {
   const year = 2020;
   const month = 4; // 五月は4で表現
@@ -12,7 +14,12 @@
     //末日は翌月一日の一日前という意味。= 翌月の0日を指定 = 今月の末日を指定できる
     const lastDate = new Date(year, month + 1, 0).getDate();
     for (let i = 1; i <= lastDate; i++) {
-      dates.push(i);
+      dates.push({
+date: i,
+isToday: false,
+isDisabled:false,
+
+});
     }
     console.log(dates);
   }
