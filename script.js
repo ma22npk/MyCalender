@@ -8,6 +8,33 @@ console.clear()
   const year = 2020;
   const month = 4; // 五月は4で表現
 
+//末日の日付 = d
+//個数 = n
+//今月一日のオブジェクト new Date(year, month, 1)
+//先日の末日 = new Date(year, month, 0)
+//d = new Date(year, month, 0).getDate()
+//n = new Date(year, month, 1).getDay()
+function getCalendarHead() {
+  const dates = [];
+const d = new Date(year, month, 0).getDate();
+const n = new Date(year, month, 1).getDay();
+
+for(let i = 0; i < n; i++){
+//30 = d
+//29, 30
+//28, 29, 30
+dates.unshift({
+date: d -i,
+isTodat: false,
+isDisabled: true,
+});
+}
+
+console.log(dates);
+
+}
+
+
   function getCalendarBody() {
     const dates = []; //date: 日付, day: 曜日
     //1日から末日の日付を入れる。
@@ -15,13 +42,13 @@ console.clear()
     const lastDate = new Date(year, month + 1, 0).getDate();
     for (let i = 1; i <= lastDate; i++) {
       dates.push({
-date: i,
-isToday: false,
-isDisabled:false,
-
-});
+        date: i,
+        isToday: false,
+        isDisabled: false,
+      });
     }
     console.log(dates);
   }
-  getCalendarBody();
+  getCalendarHead();
+  // getCalendarBody();
 }
