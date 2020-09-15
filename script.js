@@ -5,8 +5,10 @@
 console.clear()
 
 {
-  let year = 2020;
-  let month = 4; // 五月は4で表現
+  const today = new Date();
+  //getFullYearメソッドは四桁の整数で年を取得する
+  let year = today.getFullYear();
+  let month = today.getMonth(); // 五月は4で表現
 
   //末日の日付 = d
   //個数 = n
@@ -44,6 +46,12 @@ console.clear()
         isDisabled: false,
       });
     }
+    //年と月が両方とも現在か調べて、現在だったら処理を実行する。
+    if (year === today.getFullYear() && month === today.getMonth()) {
+      //本日の日付を太字にする
+      dates[today.getDate() - 1].isToday = true;
+    }
+
     return dates;
   }
 
