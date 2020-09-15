@@ -63,15 +63,24 @@ console.clear()
     return dates;
   }
 
-function createCalendar() {
-  const dates = [
-...getCalendarHead(),
-...getCalendarBody(),
-...getCalendarTail(),
-];
-console.log(dates);
+  function createCalendar() {
+    const dates = [
+      ...getCalendarHead(),
+      ...getCalendarBody(),
+      ...getCalendarTail(),
+    ];
 
-}
-createCalendar();
+    const weeks = [];
+    const weeksCount = dates.length / 7;
+
+    for (let i = 0; i < weeksCount; i++) {
+      //spliceメソッド = 要素を取り除く、置き換える、追加する
+      //datesから七日分のデータを取る 先頭から七日分を削除しつつ取り出す
+      weeks.push(dates.splice(0, 7));
+    }
+    console.log(weeks);
+
+  }
+  createCalendar();
 
 }
