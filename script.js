@@ -25,15 +25,12 @@ console.clear()
       //28, 29, 30
       dates.unshift({
         date: d - i,
-        isTodat: false,
+        isToday: false,
         isDisabled: true,
       });
     }
-
-    console.log(dates);
-
+    return dates;
   }
-
 
   function getCalendarBody() {
     const dates = []; //date: 日付, day: 曜日
@@ -47,8 +44,10 @@ console.clear()
         isDisabled: false,
       });
     }
-    console.log(dates);
+    return dates;
   }
+
+
 
   function getCalendarTail() {
     const dates = [];
@@ -61,9 +60,18 @@ console.clear()
         isDisabled: true,
       });
     }
-    console.log(dates);
+    return dates;
   }
-  //getCalendarHead();
-  // getCalendarBody();
-  getCalendarTail();
+
+function createCalendar() {
+  const dates = [
+...getCalendarHead(),
+...getCalendarBody(),
+...getCalendarTail(),
+];
+console.log(dates);
+
+}
+createCalendar();
+
 }
