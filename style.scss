@@ -19,3 +19,27 @@ td {
   padding: 8px;
   text-align: center;
 }
+
+tbody td:first-child {
+color: red;
+}
+tbody td:last-child {
+color: blue;
+}
+
+tfoot{
+font-weight: bold;
+}
+
+td.disabled{
+opacity: 0.3;
+}
+td.today{
+font-weight: bold;
+}
+
+#prev,#next,#today{
+cursor: pointer;
+user-select: none;
+
+}
