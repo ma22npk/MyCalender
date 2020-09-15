@@ -5,8 +5,8 @@
 console.clear()
 
 {
-  const year = 2020;
-  const month = 4; // 五月は4で表現
+  let year = 2020;
+  let month = 4; // 五月は4で表現
 
   //末日の日付 = d
   //個数 = n
@@ -78,25 +78,41 @@ console.clear()
       //datesから七日分のデータを取る 先頭から七日分を削除しつつ取り出す
       weeks.push(dates.splice(0, 7));
     }
-weeks.forEach(week => {
-const tr = document.createElement('tr');
-week.forEach(date => {
-const td = document.createElement('td');
+    weeks.forEach(week => {
+      const tr = document.createElement('tr');
+      week.forEach(date => {
+        const td = document.createElement('td');
 
-td.textContent = date.date;
-if(date.isToday) {
+        td.textContent = date.date;
+        if (date.isToday) {
 
-td.classList.add('today');
-}
-if(date.isDisabled){
-td.classList.add('disabled')
-}
-tr.appendChild(td);
-});
-document.querySelector('tbody').appendChild(tr);
-});
-
+          td.classList.add('today');
+        }
+        if (date.isDisabled) {
+          td.classList.add('disabled')
+        }
+        tr.appendChild(td);
+      });
+      document.querySelector('tbody').appendChild(tr);
+    });
   }
-  createCalendar();
 
+
+  document.getElementById('prev').addEventListener('click', () => {
+    month--;
+    if (month < 0) {
+      year--;
+      month = 11;
+    }
+    createCalendar();
+  });
+  document.getElementById('next').addEventListener('click', () => {
+    month++;
+    if (month > 11) {
+      year++;
+      month = 0;
+    }
+    createCalendar();
+  });
+  createCalendar();
 }
